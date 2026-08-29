@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Polix Sin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Polix (Pol) — realizador audiovisual y técnico multidisciplinar. Videoclips, visualizers, eventos, cine, portadas y sonido.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;
+  --bg-raised:#111110;
+  --ink:#ece7dd;
+  --ink-dim:#8c8880;
+  --line:#242320;
+  --rust:#c1401f;
+  --gold:#c79a3a;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:400;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,#1c1b18 1px,transparent 0);
+  background-size:34px 34px;
+  opacity:.5;
+  pointer-events:none;
+  z-index:1;
+}
+h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.01em;line-height:.92;text-transform:lowercase}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 6vw}
+@media(max-width:700px){.wrap{padding:0 6vw}}
+
+/* nav */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:1.6rem 6vw;
+  mix-blend-mode:difference;
+}
+nav.links{display:flex;gap:2.2rem;font-size:.8rem;text-transform:lowercase}
+nav.links a{position:relative;padding-bottom:2px}
+nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ink);transition:width .35s var(--ease)}
+nav.links a:hover::after{width:100%}
+@media(max-width:800px){nav.links{display:none}}
+
+/* hero */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;
+  padding-top:8rem;
+  border-bottom:1px solid var(--line);
+}
+.hero video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.28;filter:grayscale(.3);
+}
+.hero-inner{position:relative;z-index:2;padding-bottom:4.5rem}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-dim);
+  display:flex;align-items:center;gap:.7rem;margin-bottom:1.6rem;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--rust)}
+.hero h1{
+  font-size:clamp(2.8rem,8.6vw,7.4rem);
+  max-width:15ch;
+  color:var(--ink);
+}
+.hero h1 em{font-style:normal;color:var(--ink-dim)}
+.hero-sub{
+  margin-top:2rem;max-width:44ch;font-size:1.05rem;line-height:1.6;color:var(--ink-dim);
+}
+.stat-row{
+  display:flex;gap:3.4rem;margin-top:3.2rem;flex-wrap:wrap;
+  border-top:1px solid var(--line);padding-top:1.6rem;
+}
+.stat b{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--ink);display:block}
+.stat span{font-size:.72rem;color:var(--ink-dim);text-transform:lowercase;letter-spacing:.03em}
+
+/* section shared */
+section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap}
+.section-head .tag{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);margin-bottom:.8rem;display:block}
+.section-head h2{font-size:clamp(2.1rem,5.4vw,3.6rem)}
+.section-head p{max-width:34ch;color:var(--ink-dim);font-size:.95rem;line-height:1.6}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.skill{background:var(--bg-raised);padding:2.25rem 2.1rem 2rem;min-height:205px;border:1px solid var(--line);border-radius:8px;transition:background .3s var(--ease),border-color .3s var(--ease)}
+.skill:hover{background:#151513;border-color:#302e2a}
+.skill .n{font-size:.72rem;color:var(--rust)}
+.skill h3{font-size:1.7rem;margin-top:.9rem;color:var(--ink);text-transform:uppercase}
+.skill p{margin-top:1rem;font-size:.92rem;line-height:1.55;color:var(--ink-dim);max-width:34ch}
+.section-head h2{text-transform:uppercase}
+@media(max-width:800px){.skills{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.skills{grid-template-columns:1fr}}
+
+/* filters */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.filters button{
+  font-family:'Space Grotesk',sans-serif;font-size:.8rem;text-transform:lowercase;
+  background:none;border:1px solid var(--line);color:var(--ink-dim);
+  padding:.6rem 1.2rem;border-radius:100px;transition:all .3s var(--ease);
+}
+.filters button.active,.filters button:hover{border-color:var(--rust);color:var(--ink);background:rgba(193,64,31,.08)}
+
+/* works grid */
+#works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6rem}
+@media(max-width:900px){#works-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){#works-grid{grid-template-columns:1fr}}
+.work{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease);cursor:pointer}
+.work.show{opacity:1;transform:translateY(0)}
+.thumb{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;border:1px solid var(--line)}
+.work.cine .thumb,.work.cover .thumb{aspect-ratio:2/3;max-width:280px}
+.work.cover .thumb{aspect-ratio:1/1;max-width:320px}
+.thumb img,.thumb video{width:100%;height:100%;object-fit:cover;opacity:.72;transition:transform .6s var(--ease),opacity .4s var(--ease)}
+.thumb.broken{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg-raised),#0a0a0a)}
+.thumb.broken img,.thumb.broken video{display:none}
+.thumb.broken::after{content:'imagen no disponible';font-size:.7rem;color:var(--ink-dim);text-transform:lowercase;letter-spacing:.04em}
+.work:hover .thumb img,.work:hover .thumb video{opacity:1;transform:scale(1.045)}
+.play{
+  position:absolute;bottom:.8rem;right:.8rem;width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(236,231,221,.5);display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;color:var(--ink);backdrop-filter:blur(4px);
+}
+.work-meta{display:flex;justify-content:space-between;align-items:flex-start;margin-top:1rem;gap:.8rem}
+.work-meta h4{font-size:1.15rem;text-transform:lowercase;color:var(--ink)}
+.work-meta .meta{font-size:.78rem;color:var(--ink-dim);margin-top:.15rem}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem;justify-content:flex-end}
+.tags span{font-size:.6rem;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--line);padding:2px 7px;color:var(--ink-dim)}
+
+/* process / bio timeline */
+.timeline{border-top:1px solid var(--line)}
+.tl-item{
+  display:grid;grid-template-columns:110px 1fr;gap:2.4rem;
+  padding:2.4rem 0;border-bottom:1px solid var(--line);
+}
+.tl-item .yr{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--rust)}
+.tl-item p{font-size:1rem;line-height:1.65;color:var(--ink-dim);max-width:62ch}
+.tl-item p b{color:var(--ink);font-weight:500}
+@media(max-width:640px){.tl-item{grid-template-columns:1fr}.tl-item .yr{font-size:1.9rem}}
+
+/* cta / footer */
+.cta{text-align:center;padding:8.5rem 0}
+.cta .tag{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:1.6rem}
+.cta h2{font-size:clamp(2.6rem,9vw,6rem);margin:0 auto 2.6rem;max-width:16ch}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:.8rem;
+  border:1px solid var(--ink);padding:1.1rem 2.4rem;border-radius:100px;
+  font-size:.9rem;text-transform:lowercase;transition:all .35s var(--ease);
+}
+.cta-btn:hover{background:var(--ink);color:var(--bg)}
+
+footer{padding:3.5rem 0 2.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;font-size:.8rem;color:var(--ink-dim)}
+footer a:hover{color:var(--ink)}
+
+/* modal */
+#modal{position:fixed;inset:0;background:rgba(4,4,4,.97);display:none;align-items:center;justify-content:center;z-index:1000}
+#modal.active{display:flex}
+.modal-box{width:90vw;max-width:1200px;aspect-ratio:16/9;position:relative}
+#player{width:100%;height:100%}
+#player iframe{width:100%;height:100%;border:none}
+#modal-close{position:absolute;top:-46px;right:0;background:none;border:1px solid var(--line);color:var(--ink);padding:.5rem 1.1rem;border-radius:100px;font-size:.8rem;cursor:pointer}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="links">
+    <a href="#trabajos">trabajos</a>
+    <a href="#bio">bio</a>
+    <a href="#contacto">contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <video autoplay muted loop playsinline referrerpolicy="no-referrer" poster="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png">
+    <source src="https://files.catbox.moe/xviqgk.mp4" type="video/mp4">
+  </video>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">@polixsin</span>
+    <h1>polix sin</h1>
+    <p class="hero-sub">Realizador audiovisual y técnico multidisciplinar (rodaje, montaje y sonido).</p>
+  </div>
+</section>
+
+<section id="trabajos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Trabajos</h2>
+      </div>
+      <p>Videoclips, eventos, visualizers, cine, portadas y sonido.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div id="works-grid"></div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Lo que hago</h2>
+      </div>
+      <p>Cobertura integral en producción audiovisual y postproducción sonora.</p>
+    </div>
+    <div class="skills">
+      <div class="skill"><span class="n">01</span><h3>Dirección</h3><p>Conceptualización visual, guion técnico y visión creativa para videoclips y proyectos audiovisuales.</p></div>
+      <div class="skill"><span class="n">02</span><h3>Grabación</h3><p>Operador de cámara y rodaje técnico en directo, sets de rodaje, eventos y videoclips.</p></div>
+      <div class="skill"><span class="n">03</span><h3>Edición</h3><p>Montaje dinámico, ritmo narrativo, selección de tomas y postproducción de vídeo.</p></div>
+      <div class="skill"><span class="n">04</span><h3>Color</h3><p>Etalonaje, corrección de color y creación de look cinematográfico para cada pieza.</p></div>
+      <div class="skill"><span class="n">05</span><h3>Grabación de sonido</h3><p>Toma de sonido directo en rodajes, estudio de grabación y captura limpia de audio.</p></div>
+      <div class="skill"><span class="n">06</span><h3>Mezcla &amp; máster</h3><p>Tratamiento de audio, pulido sonoro, mezcla y masterización para acabado profesional.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="bio">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>bio</h2>
+      </div>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section id="contacto" style="border-bottom:none">
+  <div class="cta wrap">
+    <span class="tag">Contacto</span>
+    <h2>¿Tienes un proyecto<br>en mente?</h2>
+    <p style="max-width:52ch;margin:0 auto 2.4rem;color:var(--ink-dim);font-size:1rem;line-height:1.7;">
+      Si estás buscando una propuesta audiovisual, una colaboración o apoyo técnico para tu próximo proyecto, estaré encantado de escucharlo.
+    </p>
+    <a class="cta-btn" href="mailto:sincortespablo@gmail.com">
+      contactar por correo →
+    </a>
+  </div>
+  <div class="wrap">
+    <footer>
+      <span>© Polix Sin — realizador audiovisual</span>
+      <a href="https://instagram.com/polixsin" target="_blank" rel="noopener">@polixsin en instagram ↗</a>
+    </footer>
+  </div>
+</section>
+
+<div id="modal">
+  <div class="modal-box">
+    <button id="modal-close">cerrar ✕</button>
+    <div id="player"></div>
+  </div>
+</div>
+
+<script>
+/* data */
+const rolesDireccion=["Dirección","Grabación","Edición","Color"];
+const camOp=["Operador de cámara"];
+const data={
+  videoclips:[
+    {id:"1nBSGRurijs",title:"Menina",meta:"Bea Kres & Dtoto",roles:rolesDireccion,video:"https://files.catbox.moe/xviqgk.mp4",poster:"https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png"},
+    {id:"U3iPYsm3Cxc",title:"Ya No Estoy Roto",meta:"Siggma & Mlager",roles:rolesDireccion,video:"https://files.catbox.moe/1z9xv0.mp4",poster:"https://i.ibb.co/LdgxTZL1/sigmilla.png"},
+    {id:"C8U1537hOq4",title:"Fullcolors",meta:"Bled & BND",roles:rolesDireccion,video:"https://files.catbox.moe/pw4moh.mp4",poster:"https://i.ibb.co/3mM3YfMq/bled-y-nenid.png"},
+    {id:"3cLoDrOehCc",title:"Toxic",meta:"Siggma",roles:rolesDireccion,video:"https://files.catbox.moe/k8rksm.mp4",poster:"https://i.ibb.co/1G6fSy47/sigmilla-dossss.png"},
+    {id:"iYa6EDdnwx4",title:"Tan Tan Rápido",meta:"Pretty Cher",roles:["Dirección","Grabación","Edición","Color","Grafismo"],poster:"https://i.ibb.co/V0m4B5Rw/secu-00-02-47-06-Imagen-fija007.png"},
+    {id:"y0zWRptNfcY",title:"For Real",meta:"Siggma",roles:["Dirección","Grabación","Edición","Color","Grafismo"],poster:"https://i.imgur.com/zYXZE1F.png"},
+    {id:"K385Vhja6Ek",title:"Shaking Shaking",meta:"Fer AG",roles:rolesDireccion,video:"https://files.catbox.moe/mowfl3.mp4",poster:"https://i.ibb.co/BKBB1Mt5/fercillo.png"},
+    {id:"H1F8HjPRBhA",title:"Gabbana",meta:"Bled",roles:rolesDireccion,video:"https://files.catbox.moe/y1dbna.mp4",poster:"https://i.ibb.co/4Zgjd1n6/bledidos.png"}
+  ],
+  visualizers:[
+    {id:"1U4H_JSGDYQ",title:"Tristesse in Amin",meta:"Pretty Cher",roles:["Dirección","Fotografía","Edición"],poster:"https://img.youtube.com/vi/1U4H_JSGDYQ/maxresdefault.jpg"}
+  ],
+  eventos:[
+    {id:"YR2cPUNl6_8",title:"CYPHER FU IV: Apocalipsis",meta:"Fu Battles",roles:["Editor de vídeo"],poster:"https://img.youtube.com/vi/YR2cPUNl6_8/maxresdefault.jpg"},
+    {id:"VM6KKKOROsY",title:"Sweet Pain vs Navas",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/VM6KKKOROsY/maxresdefault.jpg"},
+    {id:"xupqzcEyCWc",title:"Fabiuki vs Dr. Filtros",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/xupqzcEyCWc/maxresdefault.jpg"},
+    {id:"--wYswsBSVk",title:"Kmbra vs Belico",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/--wYswsBSVk/maxresdefault.jpg"},
+    {id:"t8ihVtC7L7M",title:"Showcase: Rastachai",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/t8ihVtC7L7M/maxresdefault.jpg"},
+    {id:"yAbMVEwpvUE",title:"Iban vs Nacho SRK",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/yAbMVEwpvUE/maxresdefault.jpg"},
+    {id:"mlfH3KLzXYE",title:"Owen vs NQP",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/mlfH3KLzXYE/maxresdefault.jpg"},
+    {id:"XhnqYYo1oLA",title:"Viti vs Ander 2k",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/XhnqYYo1oLA/maxresdefault.jpg"},
+    {id:"4Z_W6AU-d6c",title:"Cypher Fu II",meta:"Fu Battles",roles:camOp,poster:"https://img.youtube.com/vi/4Z_W6AU-d6c/maxresdefault.jpg"},
+    {id:"2mGOL58TfL4",title:"Show: Lema y Siggma",meta:"Vainalismo",roles:["Grabación","Edición","Color"],poster:"https://img.youtube.com/vi/2mGOL58TfL4/maxresdefault.jpg"},
+    {id:"w01-Ek-caZY",title:"Show: Fer AG y Luck",meta:"Vainalismo",roles:["Grabación","Edición","Color"],poster:"https://img.youtube.com/vi/w01-Ek-caZY/maxresdefault.jpg"},
+    {id:"68ByqUOJMpA",title:"Show: Fer AG y Koa",meta:"Vainalismo",roles:["Grabación","Edición","Color"],poster:"https://img.youtube.com/vi/68ByqUOJMpA/maxresdefault.jpg"},
+    {id:"QbzTO8wobF0",title:"Suppest #1",meta:"Suppest",roles:["Operador de cámara","Iluminación"],poster:"https://img.youtube.com/vi/QbzTO8wobF0/maxresdefault.jpg"}
+  ],
+  cine:[
+    {externalUrl:"https://www.primevideo.com/detail?gti=amzn1.dv.gti.b47aaea3-fb77-4cdf-9d3d-6da76c2265d1",title:"Rider",meta:"Ignacio Estaregui",roles:["Making of"],poster:"https://a.ltrbxd.com/resized/film-poster/1/1/5/9/4/6/9/1159469-rider-0-2000-0-3000-crop.jpg?v=467e8b705d",format:"cine"},
+    {externalUrl:"https://letterboxd.com/film/miss-insomnia/",title:"Miss Insomnia",meta:"Pablo Traid",roles:["Color"],poster:"https://a.ltrbxd.com/resized/film-poster/1/3/2/4/0/6/7/1324067-miss-insomnia-0-2000-0-3000-crop.jpg?v=bd8af7f897",format:"cine"}
+  ],
+  portadas:[
+    {title:"Tristesse in Amin",meta:"Pretty Cher",roles:["Dirección","Fotografía","Edición"],poster:"https://cdn-images.dzcdn.net/images/cover/de93de9d35c0bae86e9fdd144554d165/500x500-000000-80-0-0.jpg",format:"cover"}
+  ],
+  sonido:[
+    {id:"K385Vhja6Ek",title:"Shaking Shaking",meta:"Fer AG",roles:["Grabación","Mezcla","Mastering"],poster:"https://cdn-images.dzcdn.net/images/cover/35ef88d29f1c33bfe779717ebf86c02d/500x500-000000-80-0-0.jpg",format:"cover"},
+    {id:"8MN66tLdqtQ",title:"Anecoide",meta:"VíctorLDV & Lu Demie",roles:["Mezcla","Mastering"],poster:"https://i.ibb.co/5xrwL5ZN/a-W7y7Kc.png",format:"cover"},
+    {id:"6iw0lXp-Qeg",title:"Isaac Peral",meta:"Fer AG",roles:["Grabación","Mezcla","Mastering"],poster:"https://cdn-images.dzcdn.net/images/cover/a0a742c83a977498b943b33e1b73ea1f/500x500-000000-80-0-0.jpg",format:"cover"}
+  ]
+};
+
+const grid=document.getElementById('works-grid');
+const filtersEl=document.getElementById('filters');
+
+// Un trabajo puede pertenecer a varias categorías sin problema.
+const categories=['videoclips','eventos','visualizers','cine','portadas','sonido'];
+let active='videoclips';
+
+function buildFilters(){
+  categories.forEach(cat=>{
+    const b=document.createElement('button');
+    b.textContent=cat;
+    if(cat===active) b.classList.add('active');
+    b.onclick=()=>setActive(cat,b);
+    filtersEl.appendChild(b);
+  });
+}
+function setActive(cat,btn){
+  active=cat;
+  filtersEl.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+function renderGrid(){
+  grid.innerHTML='';
+  categories.forEach(cat=>{
+    if(active!==cat) return;
+    data[cat].forEach(work=>{
+      const div=document.createElement('div');
+      div.className=`work ${work.format||''}`;
+      const media=work.video
+        ? `<video autoplay muted loop playsinline referrerpolicy="no-referrer" poster="${work.poster}" onerror="this.closest('.thumb').classList.add('broken')"><source src="${work.video}" type="video/mp4"></video>`
+        : `<img src="${work.poster}" alt="${work.title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.thumb').classList.add('broken')">`;
+      const tags=(work.roles||[]).map(r=>`<span>${r}</span>`).join('');
+      const playButton = (work.format === 'cover' || work.format === 'cine') ? '' : '<div class="play">▶</div>';
+      div.innerHTML=`
+        <div class="thumb">${media}${playButton}</div>
+        <div class="work-meta">
+          <div><h4>${work.title}</h4><div class="meta">${work.meta} · ${cat}</div></div>
+          <div class="tags">${tags}</div>
+        </div>`;
+      div.onclick=()=>{
+        if(work.externalUrl) window.open(work.externalUrl,'_blank');
+        else if(work.id) openVideo(work.id);
+      };
+      grid.appendChild(div);
+      requestAnimationFrame(()=>observer.observe(div));
+    });
+  });
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:.12});
+
+/* bio timeline */
+const timelineData=[
+  {yr:"2012",text:"Empecé a <b>grabar y editar</b> en torno a 2012 videoclips con mis amigos. Aunque éramos críos y ninguno hacía música, cogíamos canciones famosas y grabábamos planos cantándolas, luego los editaba en el PC de mis padres. Así empezó mi interés por el vídeo."},
+  {yr:"2017",text:"En 2017 quería estudiar <b>Imagen y Sonido</b>, pero no tenía la nota suficiente, así que empecé un grado de <b>Preimpresión en Artes Gráficas</b>."},
+  {yr:"2019",text:"En 2019 alquilé un local con un par de amigos y lo convertimos en nuestro <b>estudio de grabación de música</b>, aprendiendo todo sobre grabación, mezcla y máster."},
+  {yr:"2021",text:"En 2021 por fin tuve la oportunidad de meterme a un grado de <b>Realización Audiovisual</b>."},
+  {yr:"2022",text:"En 2022, mi profesor <b>Ignacio Estaregui</b> me dio la oportunidad de aportar mi granito de arena al largometraje <b>Rider</b>, donde acabé haciendo el Making Of de la película."},
+  {yr:"2023",text:"En 2023 estuve de prácticas en <b>Antena 3 (Atresmedia)</b> durante tres meses."},
+  {yr:"2024",text:"En 2024 estudié <b>Sonido</b> para afinar todo lo que aprendí sobre el tema los últimos cinco años por mi cuenta."},
+  {yr:"2025",text:"En 2025 hice un curso de <b>cinematografía</b> de unas semanas organizado por <b>ESCAC</b>."},
+  {yr:"2026",text:"En 2026 trabajé en el rodaje de la segunda temporada de <b>Murderbot</b> como auxiliar de producción."},
+  {yr:"—",text:"Al mismo tiempo, durante cada año, sigo trabajando de manera independiente en trabajos para particulares, como <b>videoclips, visualizers, música, o eventos en vivo</b>."}
+];
+const tl=document.getElementById('timeline');
+timelineData.forEach(item=>{
+  const el=document.createElement('div');
+  el.className='tl-item reveal';
+  el.innerHTML=`<div class="yr">${item.yr}</div><p>${item.text}</p>`;
+  tl.appendChild(el);
+});
+
+/* modal */
+const modal=document.getElementById('modal');
+const player=document.getElementById('player');
+function openVideo(id){
+  player.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none"></iframe>`;
+  modal.classList.add('active');
+}
+document.getElementById('modal-close').onclick=()=>{modal.classList.remove('active');player.innerHTML='';};
+modal.onclick=e=>{if(e.target===modal)document.getElementById('modal-close').onclick();};
+
+/* reveal on scroll for generic elements */
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+buildFilters();
+renderGrid();
+</script>
+</body>
+</html>
