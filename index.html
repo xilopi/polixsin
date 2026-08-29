@@ -84,6 +84,39 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
 .section-head h2{font-size:clamp(2.1rem,5.4vw,3.6rem)}
 .section-head p{max-width:34ch;color:var(--ink-dim);font-size:.95rem;line-height:1.6}
 
+/* Trabajos & Filtros */
+.filter-bar{
+  display:flex;gap:1.5rem;margin-bottom:3rem;border-bottom:1px solid var(--line);
+  padding-bottom:1rem;flex-wrap:wrap;
+}
+.filter-btn{
+  background:none;border:none;color:var(--ink-dim);font-family:'Space Grotesk',sans-serif;
+  font-size:.9rem;cursor:pointer;transition:color .3s var(--ease);padding:.2rem 0;
+  text-transform:lowercase;
+}
+.filter-btn:hover, .filter-btn.active{color:var(--ink);font-weight:600}
+.filter-btn.active{border-bottom:2px solid var(--rust)}
+
+.grid-works{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;
+}
+.work-card{
+  background:var(--bg-raised);border:1px solid var(--line);border-radius:6px;
+  overflow:hidden;transition:all .4s var(--ease);
+}
+.work-card:hover{border-color:var(--rust);transform:translateY(-4px)}
+.work-thumb{
+  width:100%;aspect-ratio:16/9;background:#1a1917;position:relative;overflow:hidden;
+}
+.work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.work-card:hover .work-thumb img{transform:scale(1.04)}
+.work-info{padding:1.4rem}
+.work-meta{font-size:.75rem;color:var(--rust);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.work-title{font-size:1.6rem;color:var(--ink)}
+
+/* Aspect ratio para portadas */
+.work-card[data-category="portadas"] .work-thumb{aspect-ratio:1/1}
+
 /* Opción 1: Badges */
 .skills-op1{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
 .badge-item{
@@ -123,38 +156,31 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
   .row-item .desc{grid-column:2;text-align:left;margin-top:.2rem}
 }
 
-/* Trabajos & Filtros */
-.filter-bar{
-  display:flex;gap:1.5rem;margin-bottom:3rem;border-bottom:1px solid var(--line);
-  padding-bottom:1rem;flex-wrap:wrap;
-}
-.filter-btn{
-  background:none;border:none;color:var(--ink-dim);font-family:'Space Grotesk',sans-serif;
-  font-size:.9rem;cursor:pointer;transition:color .3s var(--ease);padding:.2rem 0;
-  text-transform:lowercase;
-}
-.filter-btn:hover, .filter-btn.active{color:var(--ink);font-weight:600}
-.filter-btn.active{border-bottom:2px solid var(--rust)}
+/* Bio Section */
+.bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.bio-text{font-size:1.1rem;line-height:1.7;color:var(--ink-dim)}
+.bio-text p{margin-bottom:1.5rem}
+.bio-text p strong{color:var(--ink);font-weight:600}
+@media(max-width:800px){.bio-grid{grid-template-columns:1fr}}
 
-.grid-works{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;
+/* Contacto Section */
+.contact-box{
+  background:var(--bg-raised);border:1px solid var(--line);border-radius:12px;
+  padding:4rem 3vw;text-align:center;margin-top:2rem;
 }
-.work-card{
-  background:var(--bg-raised);border:1px solid var(--line);border-radius:6px;
-  overflow:hidden;transition:all .4s var(--ease);
+.contact-box h3{font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1rem}
+.contact-box p{color:var(--ink-dim);font-size:1.1rem;margin-bottom:2.5rem;max-width:45ch;margin-left:auto;margin-right:auto}
+.btn-email{
+  display:inline-block;padding:1rem 2.5rem;background:var(--rust);color:var(--ink);
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.05em;
+  border-radius:100px;transition:all .3s var(--ease);
 }
-.work-card:hover{border-color:var(--rust);transform:translateY(-4px)}
-.work-thumb{
-  width:100%;aspect-ratio:16/9;background:#1a1917;position:relative;overflow:hidden;
-}
-.work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.work-card:hover .work-thumb img{transform:scale(1.04)}
-.work-info{padding:1.4rem}
-.work-meta{font-size:.75rem;color:var(--rust);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
-.work-title{font-size:1.6rem;color:var(--ink)}
+.btn-email:hover{transform:scale(1.04);background:#d44724}
 
-/* Aspect ratio para portadas */
-.grid-works.portadas-grid .work-thumb{aspect-ratio:1/1}
+/* Footer */
+footer{padding:3rem 0;position:relative;z-index:2;border-top:1px solid var(--line)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--ink-dim)}
+.footer-links{display:flex;gap:1.5rem}
 </style>
 </head>
 <body>
@@ -163,6 +189,7 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
   <nav class="links">
     <a href="#trabajos">trabajos</a>
     <a href="#servicios">servicios</a>
+    <a href="#bio">bio</a>
     <a href="#contacto">contacto</a>
   </nav>
 </header>
@@ -190,17 +217,18 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
       <p>Videoclips, directos, cine y sonido — filtra por categoría para ver los proyectos.</p>
     </div>
 
-    <!-- FILTROS (VÍDEOS, CINE, PORTADAS, SONIDO) -->
+    <!-- FILTROS DE TRABAJOS -->
     <div class="filter-bar">
-      <button class="filter-btn active">vídeos</button>
-      <button class="filter-btn">cine</button>
-      <button class="filter-btn">portadas</button>
-      <button class="filter-btn">sonido</button>
+      <button class="filter-btn active" data-filter="videos">vídeos</button>
+      <button class="filter-btn" data-filter="cine">cine</button>
+      <button class="filter-btn" data-filter="portadas">portadas</button>
+      <button class="filter-btn" data-filter="sonido">sonido</button>
     </div>
 
-    <!-- GRID DE MUESTRA -->
+    <!-- GRID DE PROYECTOS -->
     <div class="grid-works">
-      <div class="work-card">
+      <!-- Ejemplo Vídeo (videoclip/eventos/visualizers) -->
+      <div class="work-card" data-category="videos">
         <div class="work-thumb">
           <img src="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png" alt="Videoclip">
         </div>
@@ -210,7 +238,7 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
         </div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card" data-category="videos">
         <div class="work-thumb">
           <img src="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png" alt="Visualizer">
         </div>
@@ -219,12 +247,45 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
           <h3 class="work-title">Live Session — Evento Directo</h3>
         </div>
       </div>
-    </div>
 
+      <!-- Ejemplo Cine -->
+      <div class="work-card" data-category="cine" style="display:none;">
+        <div class="work-thumb">
+          <img src="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png" alt="Cortometraje">
+        </div>
+        <div class="work-info">
+          <div class="work-meta">Cine / Cortometraje</div>
+          <h3 class="work-title">Proyecto Ficcion — Dirección de Fotografía</h3>
+        </div>
+      </div>
+
+      <!-- Ejemplo Portadas (Formato 1:1) -->
+      <div class="work-card" data-category="portadas" style="display:none;">
+        <div class="work-thumb">
+          <img src="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png" alt="Portada Álbum">
+        </div>
+        <div class="work-info">
+          <div class="work-meta">Diseño / Artwork</div>
+          <h3 class="work-title">Single Cover Design</h3>
+        </div>
+      </div>
+
+      <!-- Ejemplo Sonido -->
+      <div class="work-card" data-category="sonido" style="display:none;">
+        <div class="work-thumb">
+          <img src="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png" alt="Sonido Directo">
+        </div>
+        <div class="work-info">
+          <div class="work-meta">Audio / Mezcla &amp; Máster</div>
+          <h3 class="work-title">Producción de Audio &amp; Sound Design</h3>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- SECCIÓN LO QUE HAGO (3 OPCIONES PARA COMPARAR) -->
+<!-- SECCIÓN LO QUE HAGO (3 OPCIONES) -->
 <section id="servicios">
   <div class="wrap">
     
@@ -333,6 +394,71 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
 
   </div>
 </section>
+
+<!-- SECCIÓN BIO -->
+<section id="bio">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag">Sobre mí</span>
+        <h2>Detrás de las cámaras.</h2>
+      </div>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p>Soy <strong>Polix</strong>, realizador audiovisual especializado en la creación de contenido dinámico para proyectos musicales, eventos y producciones de ficción.</p>
+        <p>Mi enfoque combina una cuidada estética cinematográfica con un profundo control técnico en todas las fases del proceso: desde la toma de cámara e iluminación hasta el montaje, etalonaje y tratamiento de audio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <span class="eyebrow" style="justify-content:center;margin-bottom:1rem;">¿Tienes un proyecto en mente?</span>
+      <h3>¡Trabajemos juntos!</h3>
+      <p>Disponible para rodajes, dirección creativa, postproducción y proyectos de sonido.</p>
+      <a href="mailto:contacto@polix.com" class="btn-email">Enviar mensaje</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <div>&copy; 2026 Polix Sin. Todos los derechos reservados.</div>
+    <div class="footer-links">
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://vimeo.com" target="_blank" rel="noopener">Vimeo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Lógica para filtrar proyectos según la pestaña activa
+const filterBtns = document.querySelectorAll('.filter-btn');
+const workCards = document.querySelectorAll('.work-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+
+    workCards.forEach(card => {
+      if (card.getAttribute('data-category') === filter) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>
