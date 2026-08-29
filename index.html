@@ -95,6 +95,34 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
 .badge-item:hover{border-color:var(--rust);transform:translateY(-2px);background:rgba(193,64,31,.08)}
 .badge-item .n{font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--rust)}
 
+/* Opción 2: Tarjetas */
+.skills-op2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card-item{
+  background:var(--bg-raised);border:1px solid var(--line);padding:2rem;
+  border-radius:8px;transition:all .3s var(--ease);
+}
+.card-item:hover{border-color:var(--rust);transform:translateY(-3px)}
+.card-item .n{font-size:.75rem;color:var(--rust);display:block;margin-bottom:.6rem}
+.card-item h3{font-size:1.8rem;color:var(--ink);margin-bottom:.6rem}
+.card-item p{font-size:.88rem;color:var(--ink-dim);line-height:1.5}
+@media(max-width:800px){.skills-op2{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.skills-op2{grid-template-columns:1fr}}
+
+/* Opción 3: Editorial */
+.skills-op3{border-top:1px solid var(--line)}
+.row-item{
+  display:grid;grid-template-columns:60px 220px 1fr;align-items:center;
+  padding:1.4rem 0;border-bottom:1px solid var(--line);transition:all .3s var(--ease);
+}
+.row-item:hover{padding-left:.8rem;background:rgba(255,255,255,.01)}
+.row-item .n{font-size:.8rem;color:var(--rust)}
+.row-item h3{font-size:1.8rem;color:var(--ink)}
+.row-item .desc{font-size:.9rem;color:var(--ink-dim);text-align:right}
+@media(max-width:700px){
+  .row-item{grid-template-columns:40px 1fr;gap:.5rem}
+  .row-item .desc{grid-column:2;text-align:left;margin-top:.2rem}
+}
+
 /* Trabajos & Filtros */
 .filter-bar{
   display:flex;gap:1.5rem;margin-bottom:3rem;border-bottom:1px solid var(--line);
@@ -125,7 +153,7 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
 .work-meta{font-size:.75rem;color:var(--rust);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
 .work-title{font-size:1.6rem;color:var(--ink)}
 
-/* Aspect ratio específico para portadas */
+/* Aspect ratio para portadas */
 .grid-works.portadas-grid .work-thumb{aspect-ratio:1/1}
 </style>
 </head>
@@ -134,11 +162,12 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
 <header>
   <nav class="links">
     <a href="#trabajos">trabajos</a>
-    <a href="#bio">bio</a>
+    <a href="#servicios">servicios</a>
     <a href="#contacto">contacto</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <video autoplay muted loop playsinline referrerpolicy="no-referrer" poster="https://i.ibb.co/N6t2StWj/menina-completo-6-color-mejor-00-01-53-08-Imagen-fija011.png">
     <source src="https://files.catbox.moe/xviqgk.mp4" type="video/mp4">
@@ -161,7 +190,7 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
       <p>Videoclips, directos, cine y sonido — filtra por categoría para ver los proyectos.</p>
     </div>
 
-    <!-- FILTROS SIN LA OPCIÓN "TODOS" -->
+    <!-- FILTROS (VÍDEOS, CINE, PORTADAS, SONIDO) -->
     <div class="filter-bar">
       <button class="filter-btn active">vídeos</button>
       <button class="filter-btn">cine</button>
@@ -169,7 +198,7 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
       <button class="filter-btn">sonido</button>
     </div>
 
-    <!-- MUESTRA DE PROYECTOS (VÍDEOS: videoclips + visualizers + eventos) -->
+    <!-- GRID DE MUESTRA -->
     <div class="grid-works">
       <div class="work-card">
         <div class="work-thumb">
@@ -189,6 +218,116 @@ section{position:relative;z-index:2;padding:7.5rem 0;border-bottom:1px solid var
           <div class="work-meta">Visualizer / Edición</div>
           <h3 class="work-title">Live Session — Evento Directo</h3>
         </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCIÓN LO QUE HAGO (3 OPCIONES PARA COMPARAR) -->
+<section id="servicios">
+  <div class="wrap">
+    
+    <!-- OPCIÓN 1 -->
+    <div class="section-head">
+      <div>
+        <span class="tag">Lo que hago — Opción 1</span>
+        <h2>Lista Minimalista / Badges</h2>
+      </div>
+      <p>Pills limpias y dinámicas sin cajas cerradas ni pesadas.</p>
+    </div>
+    <div class="skills-op1">
+      <span class="badge-item"><span class="n">01</span> dirección</span>
+      <span class="badge-item"><span class="n">02</span> grabación</span>
+      <span class="badge-item"><span class="n">03</span> edición</span>
+      <span class="badge-item"><span class="n">04</span> color</span>
+      <span class="badge-item"><span class="n">05</span> grabación de sonido</span>
+      <span class="badge-item"><span class="n">06</span> mezcla &amp; máster</span>
+    </div>
+
+    <div style="margin-top: 6rem;"></div>
+
+    <!-- OPCIÓN 2 -->
+    <div class="section-head">
+      <div>
+        <span class="tag">Lo que hago — Opción 2</span>
+        <h2>Tarjetas Informativas</h2>
+      </div>
+      <p>Cajas con contenido útil y descripción breve para dar contexto.</p>
+    </div>
+    <div class="skills-op2">
+      <div class="card-item">
+        <span class="n">01</span>
+        <h3>Dirección</h3>
+        <p>Conceptualización visual, guion técnico y visión creativa para videoclips y proyectos audiovisuales.</p>
+      </div>
+      <div class="card-item">
+        <span class="n">02</span>
+        <h3>Grabación</h3>
+        <p>Operador de cámara y rodaje técnico en directo, sets de rodaje, eventos y videoclips.</p>
+      </div>
+      <div class="card-item">
+        <span class="n">03</span>
+        <h3>Edición</h3>
+        <p>Montaje dinámico, ritmo narrativo, selección de tomas y postproducción de vídeo.</p>
+      </div>
+      <div class="card-item">
+        <span class="n">04</span>
+        <h3>Color</h3>
+        <p>Etalonaje, corrección de color y creación de look cinematográfico para cada pieza.</p>
+      </div>
+      <div class="card-item">
+        <span class="n">05</span>
+        <h3>Grabación de Sonido</h3>
+        <p>Toma de sonido directo en rodajes, estudio de grabación y captura limpia de audio.</p>
+      </div>
+      <div class="card-item">
+        <span class="n">06</span>
+        <h3>Mezcla &amp; Máster</h3>
+        <p>Tratamiento de audio, pulido sonoro, mezcla y masterización para acabado profesional.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 6rem;"></div>
+
+    <!-- OPCIÓN 3 -->
+    <div class="section-head">
+      <div>
+        <span class="tag">Lo que hago — Opción 3</span>
+        <h2>Lista Editorial con Líneas</h2>
+      </div>
+      <p>Filas elegantes y minimalistas separadas por líneas sutiles.</p>
+    </div>
+    <div class="skills-op3">
+      <div class="row-item">
+        <span class="n">01</span>
+        <h3>Dirección</h3>
+        <span class="desc">Idea creativa, narrativa visual y dirección en set</span>
+      </div>
+      <div class="row-item">
+        <span class="n">02</span>
+        <h3>Grabación</h3>
+        <span class="desc">Cámara, iluminación y rodaje de campo</span>
+      </div>
+      <div class="row-item">
+        <span class="n">03</span>
+        <h3>Edición</h3>
+        <span class="desc">Montaje, estructura y ritmo visual</span>
+      </div>
+      <div class="row-item">
+        <span class="n">04</span>
+        <h3>Color</h3>
+        <span class="desc">Corrección de color y estilo cinematográfico</span>
+      </div>
+      <div class="row-item">
+        <span class="n">05</span>
+        <h3>Grabación de Sonido</h3>
+        <span class="desc">Audio directo en microfonía y estudio</span>
+      </div>
+      <div class="row-item">
+        <span class="n">06</span>
+        <h3>Mezcla &amp; Máster</h3>
+        <span class="desc">Postproducción de audio y masterización</span>
       </div>
     </div>
 
